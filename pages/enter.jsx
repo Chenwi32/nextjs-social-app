@@ -10,37 +10,42 @@ const enter = (props) => {
 
   return (
     <div className={styles.enter_container}>
-      {user ? 
-        !userName ? 
-          <userNameForm />
-         : 
-          <signOutButton />
-        
-       : 
-        <signInButton />
-      }
+      {user ? (
+        !userName ? (
+          <UserNameForm />
+        ) : (
+          <SignOutButton />
+        )
+      ) : (
+        <SignInButton />
+      )}
     </div>
   );
 };
 
 // Sign In with Google button
 
-function signInButton() {
+const SignInButton = () => {
   const signInWithGoogle = async () => {
-    await signInWithPopup(/* auth */ googleAuthenticationProvider);
+    await signInWithPopup(auth, googleAuthenticationProvider);
   };
- 
-  return (
-      <button onClick={signInWithGoogle}>Sign in with google</button>
-  );
-}
+
+  return <button onClick={signInWithGoogle}><img className={styles.google_img} src='/google.jpeg' /> Sign in with google</button>;
+};
 
 // Sign Out button
-function signOutButton() {
+const SignOutButton = () => {
   return <button onClick={auth.signOut()}>Sign Out</button>;
-}
+};
 
 // Sign in with Google button
-export const userNameForm = () => {};
+export const UserNameForm = () => {
+  return (
+    <>
+      <p>User Name</p>
+      <input type="text" placeholder="User Name" />
+    </>
+  );
+};
 
 export default enter;
