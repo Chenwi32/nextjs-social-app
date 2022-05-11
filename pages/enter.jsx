@@ -1,12 +1,12 @@
 import { signInWithPopup } from "firebase/auth";
+import { useContext } from "react";
 import { auth, googleAuthenticationProvider } from "../lib/firebase";
+import { UserContext } from "../lib/globalContext";
 
 import styles from "./styles/enter.module.css";
 
 const enter = (props) => {
-  const user = null;
-
-  const userName = null;
+  const {user, userName} = useContext(UserContext)
 
   return (
     <div className={styles.enter_container}>

@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useContext} from "react";
+import { UserContext } from "../lib/globalContext";
 
 import styles from "./componentStyles/NavBar.module.css";
 
 const NavBar = () => {
-  const [user, setUser] = useState(null);
-  const [userName, setUserName] = useState(null);
+  const {user, userName} = useContext(UserContext)
 
   return (
     <nav className={styles.nav_container}>
